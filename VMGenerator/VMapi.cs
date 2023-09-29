@@ -16,7 +16,7 @@ namespace VMGenerator
         private static string serverPlan = "vc2-2c-4gb"; // Par exemple, "201" pour un plan 1GB RAM
         private static string imqgeID = "NodeJS"; // Par exemple, "387" pour Ubuntu 20.04
 
-        public async static Task CreateVM(string hostName, string repoUrl)
+        public async static Task CreateVM(string hostName, string repoUrl, string commandToRun)
         {
 
             var client = new HttpClient();
@@ -59,7 +59,7 @@ namespace VMGenerator
             //var host = "45.76.47.25";
             Console.WriteLine(host);
 
-            await VMssh.ExecuteRemoteCommands(host, "root", password, repoUrl);
+            await VMssh.ExecuteRemoteCommands(host, "root", password, repoUrl, commandToRun);
 
         }
 

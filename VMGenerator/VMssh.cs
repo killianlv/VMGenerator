@@ -8,7 +8,7 @@ namespace VMGenerator
 {
     public class VMssh
     {
-        public static async Task ExecuteRemoteCommands(string host, string username, string password, string repoUrl)
+        public static async Task ExecuteRemoteCommands(string host, string username, string password, string repoUrl, string commandToRun)
         {
             SshClient cSSH = new SshClient(host, username, password);
 
@@ -18,7 +18,7 @@ namespace VMGenerator
             Console.WriteLine($"Nom du répertoire : {repoName}");
 
             cSSH.Connect();
-            var cmd = cSSH.CreateCommand($"pwd ; mkdir project ; cd project; apt-get update; apt-get install git; git clone {repoUrl}; cd {repoName}; ls; npm i; ufw allow 3000/tcp; ufw allow 5000/tcp; npm run dev");
+            var cmd = cSSH.CreateCommand($"pwd ; mkdir project ; cd project; apt-get update; apt-get install git; git clone {repoUrl}; cd {repoName}; ls; npm i; ufw allow 3000/tcp; ufw allow 5000/tcp; {commandToRun}");
 
             var result = cmd.BeginExecute();
 

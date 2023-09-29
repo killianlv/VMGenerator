@@ -16,7 +16,8 @@ namespace VMGenerator
                     if (opts.RepoUrl != null && IsValidUrl(opts.RepoUrl))
                     {
                         Console.WriteLine($"Création de la VM pour Repo URL : {opts.RepoUrl}");
-                        await VMapi.CreateVM("testHostname", opts.RepoUrl);
+                        Console.WriteLine($"Exécution de la commande : {opts.CommandToRun}");
+                        await VMapi.CreateVM("myMV", opts.RepoUrl, opts.CommandToRun);
                     }
                     else
                     {
@@ -32,6 +33,9 @@ namespace VMGenerator
         {
             [Option('r', "repo", Required = true, HelpText = "Url du repo")]
             public string? RepoUrl { get; set; }
+
+            [Option('c', "command", Required = false, Default = "npm start", HelpText = "Commande à exécuter après le clonage")]
+            public string CommandToRun { get; set; }
 
         }
 

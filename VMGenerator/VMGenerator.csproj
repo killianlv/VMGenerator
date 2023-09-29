@@ -5,6 +5,10 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	  <RootNameSpace>VMGenerator</RootNameSpace>
+	  <PackAsTool>true</PackAsTool>
+	  <ToolCommandName>vmg</ToolCommandName>
+	  <PackageOutputPath>./vmg</PackageOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,6 +16,8 @@
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="SSH.NET" Version="2020.0.2" />
+	<DotnetToolReference Include="VMGenerator" Version="1.0.0" />
   </ItemGroup>
+	
 
 </Project>
